@@ -1,0 +1,37 @@
+baseURL = "https://imsdahl.de/"
+title = "Lars Imsdahl"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+enableRobotsTXT = true
+enableEmoji = false
+
+[languages]
+  [languages.en]
+    languageName = "EN"
+    weight = 1
+    title = "Lars Imsdahl — Technology Consulting"
+    [languages.en.params]
+      description = "Bridging people and technology through first principles thinking. AI, Software Defined Vehicles, Defense Technology."
+      subtitle = "Technology Consulting"
+
+  [languages.de]
+    languageName = "DE"
+    weight = 2
+    title = "Lars Imsdahl — Technologieberatung"
+    [languages.de.params]
+      description = "Menschen und Technologie verbinden durch First-Principles-Denken. KI, Software Defined Vehicles, Verteidigungstechnologie."
+      subtitle = "Technologieberatung"
+
+[params]
+  author = "Lars Imsdahl"
+  email = "info@imsdahl.de"
+  tagline = "First Principles. Exponential Growth."
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home = ["HTML"]
+  page = ["HTML"]

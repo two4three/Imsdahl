@@ -1,0 +1,53 @@
+{{ define "main" }}
+
+<section class="hero">
+  <div class="container">
+    <div class="hero__tagline">{{ .Site.Params.tagline }}</div>
+    <h1>{{ .Title }}</h1>
+    <p class="hero__subtitle">{{ .Params.subtitle }}</p>
+
+    <div class="credentials" style="margin-top: 2rem;">
+      {{ range .Params.credentials }}
+        <span class="credential-tag">{{ . }}</span>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="container">
+    <div class="section__label">Services</div>
+    <div class="services-grid">
+      {{ range .Params.services }}
+      <div class="service-card">
+        <div class="service-card__title">{{ .title }}</div>
+        <p class="service-card__desc">{{ .description }}</p>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="philosophy">
+  <div class="container">
+    <div class="section__label">Philosophy</div>
+    <div class="philosophy-text">
+      {{ .Content }}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section__label">Contact</div>
+    <p class="contact-line">
+      {{ .Params.contact_text }}
+      <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
+    </p>
+    <p class="contact-line" style="margin-top: 0.5rem;">
+      <a href="https://www.linkedin.com/in/larsimsdahl/" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+    </p>
+  </div>
+</section>
+
+{{ end }}

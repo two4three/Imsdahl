@@ -1,0 +1,327 @@
+/* ========================================
+   imsdahl.de — Clean Minimal Consulting
+   Mobile-first, bilingual
+   ======================================== */
+
+:root {
+  --color-bg: #fafaf9;
+  --color-surface: #ffffff;
+  --color-text: #1c1917;
+  --color-text-secondary: #57534e;
+  --color-text-muted: #a8a29e;
+  --color-accent: #0c4a6e;
+  --color-accent-light: #e0f2fe;
+  --color-border: #e7e5e4;
+  --color-border-light: #f5f5f4;
+
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'DM Mono', 'Menlo', monospace;
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+
+  --max-width: 720px;
+  --max-width-wide: 960px;
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- Typography ---- */
+h1, h2, h3 {
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: 2rem; margin-bottom: var(--space-lg); }
+h2 { font-size: 1.5rem; margin-bottom: var(--space-md); margin-top: var(--space-2xl); }
+h3 { font-size: 1.125rem; margin-bottom: var(--space-sm); margin-top: var(--space-xl); }
+
+p { margin-bottom: var(--space-md); }
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+a:hover { opacity: 0.7; }
+
+strong { font-weight: 600; }
+
+/* ---- Layout ---- */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.container--wide {
+  max-width: var(--max-width-wide);
+}
+
+/* ---- Header ---- */
+.site-header {
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-header__inner {
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-header__name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+.site-header__name a {
+  color: inherit;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.site-nav a {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  transition: color 0.15s ease;
+}
+
+.site-nav a:hover {
+  color: var(--color-text);
+  opacity: 1;
+}
+
+.lang-switch {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--color-text-muted);
+  border-left: 1px solid var(--color-border);
+  padding-left: var(--space-lg);
+  margin-left: var(--space-sm);
+}
+
+.lang-switch a {
+  color: var(--color-text-muted);
+}
+
+.lang-switch a:hover,
+.lang-switch a.active {
+  color: var(--color-text);
+  opacity: 1;
+}
+
+/* ---- Hero ---- */
+.hero {
+  padding: var(--space-3xl) 0 var(--space-2xl);
+}
+
+.hero__tagline {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  max-width: 600px;
+}
+
+.hero__subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-top: var(--space-lg);
+  max-width: 540px;
+}
+
+/* ---- Sections ---- */
+.section {
+  padding: var(--space-2xl) 0;
+}
+
+.section + .section {
+  border-top: 1px solid var(--color-border-light);
+}
+
+.section__label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-lg);
+}
+
+/* ---- Service Cards ---- */
+.services-grid {
+  display: grid;
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.service-card {
+  padding: var(--space-xl);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+}
+
+.service-card:hover {
+  border-color: var(--color-accent);
+}
+
+.service-card__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+}
+
+.service-card__desc {
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* ---- Credentials ---- */
+.credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.credential-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  background: var(--color-border-light);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* ---- Philosophy ---- */
+.philosophy-text {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--color-text);
+  max-width: 600px;
+}
+
+.philosophy-text p + p {
+  margin-top: var(--space-md);
+}
+
+/* ---- Contact ---- */
+.contact-line {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+}
+
+.contact-line a {
+  font-weight: 500;
+}
+
+/* ---- Footer ---- */
+.site-footer {
+  padding: var(--space-2xl) 0;
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-2xl);
+}
+
+.site-footer__inner {
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.site-footer a {
+  color: var(--color-text-muted);
+}
+
+/* ---- Page template ---- */
+.page-content {
+  padding: var(--space-2xl) 0 var(--space-3xl);
+}
+
+.page-content h1 {
+  margin-bottom: var(--space-xl);
+}
+
+/* ---- Responsive ---- */
+
+@media (min-width: 640px) {
+  .hero h1 { font-size: 2.75rem; }
+  .hero__subtitle { font-size: 1.25rem; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 960px) {
+  .hero h1 { font-size: 3rem; }
+}
+
+/* ---- Mobile nav ---- */
+@media (max-width: 639px) {
+  .site-header__inner {
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .site-nav {
+    gap: var(--space-md);
+    width: 100%;
+    order: 3;
+  }
+
+  .lang-switch {
+    border-left: none;
+    padding-left: 0;
+    margin-left: auto;
+  }
+}

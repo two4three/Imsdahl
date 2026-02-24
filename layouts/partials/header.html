@@ -1,0 +1,43 @@
+<header class="site-header">
+  <div class="site-header__inner">
+    <div class="site-header__name">
+      <a href="{{ .Site.Home.Permalink }}">Lars Imsdahl</a>
+    </div>
+
+    <nav class="site-nav">
+      {{ if eq .Lang "en" }}
+        <a href="{{ .Site.Home.Permalink }}#services">Services</a>
+        <a href="{{ .Site.Home.Permalink }}#philosophy">Philosophy</a>
+        <a href="{{ .Site.Home.Permalink }}#contact">Contact</a>
+      {{ else }}
+        <a href="{{ .Site.Home.Permalink }}#services">Leistungen</a>
+        <a href="{{ .Site.Home.Permalink }}#philosophy">Philosophie</a>
+        <a href="{{ .Site.Home.Permalink }}#contact">Kontakt</a>
+      {{ end }}
+    </nav>
+
+    <div class="lang-switch">
+      {{ range .Site.Languages }}
+        {{ if eq $.Lang .Lang }}
+          <span class="active" style="color: var(--color-text); font-weight: 500;">{{ .LanguageName }}</span>
+        {{ else }}
+          {{ $translationPage := $.Translations }}
+          {{ $targetPage := false }}
+          {{ range $translationPage }}
+            {{ if eq .Lang $.Lang }}{{ else }}{{ $targetPage = . }}{{ end }}
+          {{ end }}
+          {{ if $targetPage }}
+            <a href="{{ $targetPage.Permalink }}">{{ .LanguageName }}</a>
+          {{ else }}
+            {{ $home := site.Home }}
+            {{ range site.Sites }}
+              {{ if eq .Language.Lang $.Lang }}{{ else }}
+                <a href="{{ .Home.Permalink }}">{{ .Language.LanguageName }}</a>
+              {{ end }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</header>
