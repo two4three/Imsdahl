@@ -9,23 +9,23 @@ enableEmoji = false
   [languages.en]
     languageName = "EN"
     weight = 1
-    title = "Lars Imsdahl — Technology Consulting"
+    title = "Lars Imsdahl — AI Consulting"
     [languages.en.params]
-      description = "Bridging people and technology through first principles thinking. AI, Software Defined Vehicles, Defense Technology."
-      subtitle = "Technology Consulting"
+      description = "AI consulting for German Mittelstand. We identify the most profitable AI levers in your business — with concrete ROI."
+      subtitle = "AI Consulting"
 
   [languages.de]
     languageName = "DE"
     weight = 2
-    title = "Lars Imsdahl — Technologieberatung"
+    title = "Lars Imsdahl — KI-Beratung"
     [languages.de.params]
-      description = "Menschen und Technologie verbinden durch First-Principles-Denken. KI, Software Defined Vehicles, Verteidigungstechnologie."
-      subtitle = "Technologieberatung"
+      description = "KI-Beratung für den Mittelstand. Wir identifizieren die profitabelsten KI-Hebel in Ihrem Unternehmen — mit konkretem ROI."
+      subtitle = "KI-Beratung"
 
 [params]
   author = "Lars Imsdahl"
   email = "lars@imsdahl.de"
-  tagline = "First Principles. Exponential Growth."
+  tagline = "KI, die sich rechnet."
 
 [markup]
   [markup.goldmark]

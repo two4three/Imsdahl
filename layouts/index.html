@@ -1,53 +1,242 @@
 {{ define "main" }}
 
-<section class="hero">
-  <div class="container">
-    <div class="hero__tagline">{{ .Site.Params.tagline }}</div>
-    <h1>{{ .Title }}</h1>
-    <p class="hero__subtitle">{{ .Params.subtitle }}</p>
-
-    <div class="credentials" style="margin-top: 2rem;">
-      {{ range .Params.credentials }}
-        <span class="credential-tag">{{ . }}</span>
-      {{ end }}
-    </div>
-  </div>
-</section>
-
-<section class="section" id="services">
-  <div class="container">
-    <div class="section__label">Services</div>
-    <div class="services-grid">
-      {{ range .Params.services }}
-      <div class="service-card">
-        <div class="service-card__title">{{ .title }}</div>
-        <p class="service-card__desc">{{ .description }}</p>
+<!-- ══════════════════════ HERO ══════════════════════ -->
+<section class="section section--hero" id="home">
+  <div class="container container--wide">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero__tagline">{{ .Site.Params.tagline }}</p>
+        <h1 class="hero__heading">
+          {{ if eq .Lang "de" }}KI, die sich rechnet – für strategisches Wachstum{{ else }}AI That Pays for Itself — Strategic Growth{{ end }}
+        </h1>
+        <p class="hero__subtitle">
+          {{ if eq .Lang "de" }}Sie wissen, dass KI relevant ist — aber nicht, wo anfangen? Wir finden in 3–5 Tagen die profitabelsten KI-Hebel in Ihrem Unternehmen.{{ else }}You know AI is relevant — but not where to start? In 3–5 days, we find the most profitable AI levers in your business.{{ end }}
+        </p>
+        <div class="credentials">
+          <span class="credential-tag">BMW</span>
+          <span class="credential-tag">Roland Berger</span>
+          <span class="credential-tag">MHP</span>
+          <span class="credential-tag">MIT</span>
+          <span class="credential-tag">BID Equity</span>
+        </div>
+        <a href="#contact" class="btn btn--gold">
+          {{ if eq .Lang "de" }}Termin vereinbaren{{ else }}Book a Call{{ end }}
+        </a>
       </div>
+      <div class="hero-photo-wrap">
+        <img src="/images/lars-imsdahl.jpg" alt="Lars Imsdahl" class="hero-photo">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ PACKAGES ══════════════════════ -->
+<section class="section section--white" id="packages">
+  <div class="container">
+    <div class="section__label">{{ if eq .Lang "de" }}Leistungen{{ else }}Services{{ end }}</div>
+    <h2 class="section__heading">
+      {{ if eq .Lang "de" }}Der richtige Hebel für Ihr Unternehmen{{ else }}The Right Lever for Your Business{{ end }}
+    </h2>
+    <div class="packages-grid">
+
+      <!-- Entry -->
+      <div class="package-card">
+        <div class="package-card__header">
+          <div class="package-card__name">AI Discovery Day</div>
+          <div class="package-card__price">ab €2.500</div>
+          <div class="package-card__duration">{{ if eq .Lang "de" }}0,5–1 Tag{{ else }}Half–1 Day{{ end }}</div>
+        </div>
+        <ul class="package-card__benefits">
+          {{ if eq .Lang "de" }}
+            <li>Ihr Team erlebt KI live — mit Ihren eigenen Daten</li>
+            <li>Sie sehen sofort, wo die größten Chancen liegen</li>
+            <li>Keine Verpflichtung — nur Klarheit</li>
+          {{ else }}
+            <li>Your team experiences AI live — with your own data</li>
+            <li>You immediately see where the biggest opportunities are</li>
+            <li>No commitment — just clarity</li>
+          {{ end }}
+        </ul>
+        <a href="#contact" class="btn btn--outline">{{ if eq .Lang "de" }}Discovery Day buchen{{ else }}Book Discovery Day{{ end }}</a>
+      </div>
+
+      <!-- Core (featured) -->
+      <div class="package-card package-card--featured">
+        <div class="package-card__badge">{{ if eq .Lang "de" }}Empfohlen{{ else }}Recommended{{ end }}</div>
+        <div class="package-card__header">
+          <div class="package-card__name">AI Profitability Audit</div>
+          <div class="package-card__price">€15.000</div>
+          <div class="package-card__duration">{{ if eq .Lang "de" }}3–5 Tage · Festpreis{{ else }}3–5 Days · Fixed Price{{ end }}</div>
+        </div>
+        <ul class="package-card__benefits">
+          {{ if eq .Lang "de" }}
+            <li>Top-3 KI-Profithebel mit konkretem €-Wert</li>
+            <li>Funktionierender Prototyp für den größten Hebel</li>
+            <li>Priorisierte Roadmap für Ihre Geschäftsführung</li>
+            <li class="package-card__guarantee">Garantie: Kein Potenzial über €500K gefunden? Sie zahlen nichts.</li>
+          {{ else }}
+            <li>Top-3 AI profit levers with concrete €-value</li>
+            <li>Working prototype for the biggest lever</li>
+            <li>Prioritized roadmap for your management</li>
+            <li class="package-card__guarantee">Guarantee: No potential over €500K found? You pay nothing.</li>
+          {{ end }}
+        </ul>
+        <a href="#contact" class="btn btn--gold">{{ if eq .Lang "de" }}Audit anfragen{{ else }}Request Audit{{ end }}</a>
+      </div>
+
+      <!-- Premium -->
+      <div class="package-card">
+        <div class="package-card__header">
+          <div class="package-card__name">AI &amp; Automation Transformation</div>
+          <div class="package-card__price">€250.000</div>
+          <div class="package-card__duration">{{ if eq .Lang "de" }}Mehrere Monate{{ else }}Several Months{{ end }}</div>
+        </div>
+        <ul class="package-card__benefits">
+          {{ if eq .Lang "de" }}
+            <li>Wirtschaftliches Potenzial im Millionenbereich aufdecken</li>
+            <li>9 Phasen: Von Awareness über Quick Wins bis zur vollen Umsetzung</li>
+            <li>Cross-funktional über alle Abteilungen</li>
+            <li>Erfahrung bis €1 Mrd. identifiziertes Potenzial</li>
+          {{ else }}
+            <li>Uncover economic potential in the millions</li>
+            <li>9 phases: From awareness through quick wins to full implementation</li>
+            <li>Cross-functional across all departments</li>
+            <li>Experience up to €1B in identified potential</li>
+          {{ end }}
+        </ul>
+        <a href="#contact" class="btn btn--outline">{{ if eq .Lang "de" }}Transformation besprechen{{ else }}Discuss Transformation{{ end }}</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ HOW IT WORKS ══════════════════════ -->
+<section class="section section--navy" id="how-it-works">
+  <div class="container">
+    <div class="section__label section__label--gold">{{ if eq .Lang "de" }}Vorgehen{{ else }}Process{{ end }}</div>
+    <h2 class="section__heading section__heading--light">
+      {{ if eq .Lang "de" }}So funktioniert es{{ else }}How It Works{{ end }}
+    </h2>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step__number">01</div>
+        <div class="step__title">Discovery</div>
+        <div class="step__desc">{{ if eq .Lang "de" }}Wir verstehen Ihr Geschäft, Ihre Daten und Ihre größten Schmerzpunkte.{{ else }}We understand your business, your data, and your biggest pain points.{{ end }}</div>
+      </div>
+      <div class="step__connector" aria-hidden="true"></div>
+      <div class="step">
+        <div class="step__number">02</div>
+        <div class="step__title">Audit</div>
+        <div class="step__desc">{{ if eq .Lang "de" }}Wir identifizieren die Top-3 KI-Hebel mit konkretem €-Potenzial.{{ else }}We identify the top-3 AI levers with concrete €-potential.{{ end }}</div>
+      </div>
+      <div class="step__connector" aria-hidden="true"></div>
+      <div class="step">
+        <div class="step__number">03</div>
+        <div class="step__title">Proof of Concept</div>
+        <div class="step__desc">{{ if eq .Lang "de" }}Wir liefern einen funktionierenden Prototyp — in Tagen, nicht Monaten.{{ else }}We deliver a working prototype — in days, not months.{{ end }}</div>
+      </div>
+      <div class="step__connector" aria-hidden="true"></div>
+      <div class="step">
+        <div class="step__number">04</div>
+        <div class="step__title">{{ if eq .Lang "de" }}Umsetzung{{ else }}Implementation{{ end }}</div>
+        <div class="step__desc">{{ if eq .Lang "de" }}Rollout via bewährtem Netzwerk — kein Vendor-Lock-in.{{ else }}Rollout via our proven network — no vendor lock-in.{{ end }}</div>
+      </div>
+    </div>
+    <p class="steps-note">
+      {{ if eq .Lang "de" }}An jedem Punkt entscheiden Sie: weitermachen oder aufhören. Kein Lock-in.{{ else }}At every gate, you decide: continue or stop. No lock-in.{{ end }}
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════ ABOUT ══════════════════════ -->
+<section class="section section--white" id="about">
+  <div class="container container--narrow">
+    <div class="section__label">{{ if eq .Lang "de" }}Über mich{{ else }}About{{ end }}</div>
+    <h2 class="section__heading">
+      {{ if eq .Lang "de" }}Der Insider, der unabhängig wurde{{ else }}The Insider Who Went Independent{{ end }}
+    </h2>
+    <div class="about-text">
+      {{ if eq .Lang "de" }}
+        <p>15 Jahre bei BMW, Roland Berger, MHP — Automotive, Private Equity (BID Equity), Industrie. Ich kenne beide Seiten: die Beraterwelt und die operative Realität.</p>
+        <p>Dieselbe Qualität wie die Big 4 — geliefert in Tagen statt Monaten, zu einem Bruchteil der Kosten. Open Source, DSGVO-konform, kein Vendor-Lock-in.</p>
+        <p class="about-quote">„Manchmal ist die Antwort: Dafür brauchen Sie keine KI."</p>
+        <p>Ehrlichkeit hat mich unabhängig gemacht. Sie wird auch Sie weiterbringen.</p>
+      {{ else }}
+        <p>15 years at BMW, Roland Berger, MHP — automotive, private equity (BID Equity), industry. I know both sides: the consulting world and operational reality.</p>
+        <p>Same quality as the Big 4 — delivered in days not months, at a fraction of the cost. Open source, GDPR-compliant, no vendor lock-in.</p>
+        <p class="about-quote">"Sometimes the answer is: you don't need AI for that."</p>
+        <p>Honesty is what made me go independent. It will also move you forward.</p>
       {{ end }}
     </div>
   </div>
 </section>
 
-<section class="section" id="philosophy">
+<!-- ══════════════════════ CONTACT ══════════════════════ -->
+<section class="section section--navy" id="contact">
   <div class="container">
-    <div class="section__label">Philosophy</div>
-    <div class="philosophy-text">
-      {{ .Content }}
+    <div class="section__label section__label--gold">{{ if eq .Lang "de" }}Kontakt{{ else }}Contact{{ end }}</div>
+    <h2 class="section__heading section__heading--light">
+      {{ if eq .Lang "de" }}Bereit? Lassen Sie uns sprechen.{{ else }}Ready? Let's talk.{{ end }}
+    </h2>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-item__icon" aria-hidden="true">&#9990;</div>
+        <div class="contact-item__label">{{ if eq .Lang "de" }}Telefon{{ else }}Phone{{ end }}</div>
+        <a href="tel:+49XXXXXXXXXX" class="contact-item__value">+49 XXX XXXXXXX</a>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item__icon" aria-hidden="true">&#9993;</div>
+        <div class="contact-item__label">E-Mail</div>
+        <a href="mailto:lars@imsdahl.de" class="contact-item__value">lars@imsdahl.de</a>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item__icon" aria-hidden="true">&#128197;</div>
+        <div class="contact-item__label">{{ if eq .Lang "de" }}Termin{{ else }}Calendar{{ end }}</div>
+        <a href="https://calendly.com/larsimsdahl" target="_blank" rel="noopener" class="btn btn--gold">
+          {{ if eq .Lang "de" }}Termin buchen{{ else }}Book a Meeting{{ end }}
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="contact">
-  <div class="container">
-    <div class="section__label">Contact</div>
-    <p class="contact-line">
-      {{ .Params.contact_text }}
-      <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
-    </p>
-    <p class="contact-line" style="margin-top: 0.5rem;">
-      <a href="https://www.linkedin.com/in/larsimsdahl/" target="_blank" rel="noopener">LinkedIn &rarr;</a>
-    </p>
-  </div>
-</section>
+<script>
+(function () {
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var t = document.querySelector(this.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  // Fade-in on scroll
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.section:not(.section--hero)').forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.section').forEach(function (el) { el.classList.add('visible'); });
+  }
+
+  // Hamburger
+  var toggle = document.getElementById('menu-toggle');
+  var nav    = document.getElementById('site-nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+}());
+</script>
 
 {{ end }}

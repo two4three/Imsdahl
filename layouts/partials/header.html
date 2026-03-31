@@ -4,40 +4,45 @@
       <a href="{{ .Site.Home.Permalink }}">Lars Imsdahl</a>
     </div>
 
-    <nav class="site-nav">
-      {{ if eq .Lang "en" }}
-        <a href="{{ .Site.Home.Permalink }}#services">Services</a>
-        <a href="{{ .Site.Home.Permalink }}#philosophy">Philosophy</a>
-        <a href="{{ .Site.Home.Permalink }}#contact">Contact</a>
-      {{ else }}
-        <a href="{{ .Site.Home.Permalink }}#services">Leistungen</a>
-        <a href="{{ .Site.Home.Permalink }}#philosophy">Philosophie</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="site-nav" id="site-nav">
+      {{ if eq .Lang "de" }}
+        <a href="{{ .Site.Home.Permalink }}#packages">Leistungen</a>
+        <a href="{{ .Site.Home.Permalink }}#how-it-works">Vorgehen</a>
+        <a href="{{ .Site.Home.Permalink }}#about">Über mich</a>
         <a href="{{ .Site.Home.Permalink }}#contact">Kontakt</a>
+      {{ else }}
+        <a href="{{ .Site.Home.Permalink }}#packages">Services</a>
+        <a href="{{ .Site.Home.Permalink }}#how-it-works">Process</a>
+        <a href="{{ .Site.Home.Permalink }}#about">About</a>
+        <a href="{{ .Site.Home.Permalink }}#contact">Contact</a>
       {{ end }}
     </nav>
 
-    <div class="lang-switch">
-      {{ range .Site.Languages }}
-        {{ if eq $.Lang .Lang }}
-          <span class="active" style="color: var(--color-text); font-weight: 500;">{{ .LanguageName }}</span>
-        {{ else }}
-          {{ $translationPage := $.Translations }}
-          {{ $targetPage := false }}
-          {{ range $translationPage }}
-            {{ if eq .Lang $.Lang }}{{ else }}{{ $targetPage = . }}{{ end }}
-          {{ end }}
-          {{ if $targetPage }}
-            <a href="{{ $targetPage.Permalink }}">{{ .LanguageName }}</a>
+    <div class="header-right">
+      <div class="lang-switch">
+        {{ range .Site.Languages }}
+          {{ if eq $.Lang .Lang }}
+            <span class="lang-active">{{ .LanguageName }}</span>
           {{ else }}
-            {{ $home := site.Home }}
-            {{ range site.Sites }}
-              {{ if eq .Language.Lang $.Lang }}{{ else }}
-                <a href="{{ .Home.Permalink }}">{{ .Language.LanguageName }}</a>
+            <span class="lang-divider" aria-hidden="true">|</span>
+            {{ $targetPage := false }}
+            {{ range $.Translations }}{{ $targetPage = . }}{{ end }}
+            {{ if $targetPage }}
+              <a href="{{ $targetPage.Permalink }}">{{ .LanguageName }}</a>
+            {{ else }}
+              {{ range site.Sites }}
+                {{ if ne .Language.Lang $.Lang }}
+                  <a href="{{ .Home.Permalink }}">{{ .Language.LanguageName }}</a>
+                {{ end }}
               {{ end }}
             {{ end }}
           {{ end }}
         {{ end }}
-      {{ end }}
+      </div>
     </div>
   </div>
 </header>
